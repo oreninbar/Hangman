@@ -18,15 +18,15 @@ class App extends Component {
     super()
     this.state = {
       letters: generateLetterStatuses(),
-      word: "CALM",
       score: 50,
-      hint: "Your ideal mood when coding",
+      questionNumber: 0,
       questions: [
         { word: "CALM", hint: "Your ideal mood when coding" },
         { word: "SHOOBERT", hint: "Jona most common word" },
-        { word: "Gilly", hint: "Gilly dog name" }
-      ],
-      questionNumber: 0
+        { word: "GILLY", hint: "Gilly dog name" }
+      ]
+      // word: "CALM",
+      // hint: "Your ideal mood when coding",
     }
   }
 
@@ -44,14 +44,13 @@ class App extends Component {
       console.log(this.state.letters);
       console.log(this.state.score);
       console.log(this.state.questionNumber);
-      //window.location.reload();
     })
 
   }
 
   //checks solution completion 
   solutionCompletion = () => {
-    let arrWord = this.state.word.split('')
+    let arrWord = this.state.questions[this.state.questionNumber].word.split('')
     for (const letter of arrWord) {
       if (!this.state.letters[letter])
         return false
@@ -61,7 +60,7 @@ class App extends Component {
 
   //checks if the letter exist in the word array 
   checkTheLetterExist = letter => {
-    let arrWord = this.state.word.split('')
+    let arrWord = this.state.questions[this.state.questionNumber].word.split('')
     for (const l of arrWord)
       if (l === letter)
         return true
@@ -102,3 +101,12 @@ class App extends Component {
 
 export default App;
 
+/* <div className="main-container">
+<Score score={this.state.score} />
+{this.solutionCompletion() || (this.state.score < 0) ?
+  (<div><EndGame score={this.state.score} startOver={this.startOver} />
+    <Letters letters={this.state.letters} selectLetter={this.selectLetter} updateScore={this.updateScore} /></div>)
+  :
+  (<div><Solution letters={this.state.letters} word={this.state.questions[this.state.questionNumber].word} hint={this.state.questions[this.state.questionNumber].hint} />
+<Letters letters={this.state.letters} selectLetter={this.selectLetter} updateScore={this.updateScore} /></div>)}
+</div> */
