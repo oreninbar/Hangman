@@ -21,17 +21,32 @@ class App extends Component {
       word: "CALM",
       score: 50,
       hint: "Your ideal mood when coding",
+      questions: [
+        { word: "CALM", hint: "Your ideal mood when coding" },
+        { word: "SHOOBERT", hint: "Jona most common word" },
+        { word: "Gilly", hint: "Gilly dog name" }
+      ],
+      questionNumber: 0
     }
   }
 
-  
+
   //start over the game
   startOver = () => {
-    const letters = generateLetterStatuses()
+    let counter = this.state.questionNumber
+    let letters = generateLetterStatuses()
+    counter++
     this.setState({
       letters: letters,
-      score: 50
+      score: 50,
+      questionNumber: counter
+    }, function () {
+      console.log(this.state.letters);
+      console.log(this.state.score);
+      console.log(this.state.questionNumber);
+      //window.location.reload();
     })
+
   }
 
   //checks solution completion 
@@ -75,7 +90,9 @@ class App extends Component {
     return (
       <div className="main-container">
         <Score score={this.state.score} />
-        {this.solutionCompletion() || (this.state.score < 0) ? <EndGame score={this.state.score} startOver={this.startOver}/> : <Solution letters={this.state.letters} word={this.state.word} hint={this.state.hint} />}
+        {this.solutionCompletion() || (this.state.score < 0) ?
+          <EndGame score={this.state.score} startOver={this.startOver} /> :
+          <Solution letters={this.state.letters} word={this.state.questions[this.state.questionNumber].word} hint={this.state.questions[this.state.questionNumber].hint} />}
         <Letters letters={this.state.letters} selectLetter={this.selectLetter} updateScore={this.updateScore} />
       </div>
     )

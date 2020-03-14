@@ -11,7 +11,7 @@ class Letters extends Component {
                 <div > Available letters </div>
                 {<div id="letters" >{lettersList.map(l => {
                     return (
-                        <span id={`letter ${l}`} className='available-letters'><Letter key={l} letter={l} selectLetter={this.props.selectLetter} updateScore={this.props.updateScore} /></span>)
+                        <span id={`letter ${l}`} key={l} className='available-letters'><Letter key={l} letter={l} selectLetter={this.props.selectLetter} updateScore={this.props.updateScore} /></span>)
                 })}
                 </div>}
             </div>
