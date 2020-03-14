@@ -20,7 +20,6 @@ class App extends Component {
       word: "CALM",
       score: 50,
       hint: "Your ideal mood when coding",
-
     }
   }
 
@@ -52,11 +51,11 @@ class App extends Component {
         score: score
       }, function () {
         if (this.solutionCompletion()) {
-          prompt('Your a WINNER!!!')
+          alert('Your a WINNER!!!')
         }
       })
     }
-    else prompt('GAME OVER!!!')
+    else alert('GAME OVER!!!')
   }
 
   //changes the letter state 
