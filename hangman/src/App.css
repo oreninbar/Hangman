@@ -55,3 +55,13 @@
 .high-score{
   color: greenyellow
 }
+
+#end-message1{
+font-size: 50px;
+color: rgb(236, 9, 9);
+}
+
+#end-message2{
+  font-size: 50px;
+  color: rgb(9, 236, 9);
+}

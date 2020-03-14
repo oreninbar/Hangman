@@ -3,6 +3,7 @@ import './App.css';
 import Letters from './components/Letters';
 import Score from './components/Score';
 import Solution from './components/Solution';
+import EndGame from './components/EndGame';
 //-----------------------Generate the letters 
 function generateLetterStatuses() {
   let letterStatus = {}
@@ -21,6 +22,16 @@ class App extends Component {
       score: 50,
       hint: "Your ideal mood when coding",
     }
+  }
+
+  
+  //start over the game
+  startOver = () => {
+    const letters = generateLetterStatuses()
+    this.setState({
+      letters: letters,
+      score: 50
+    })
   }
 
   //checks solution completion 
@@ -46,16 +57,9 @@ class App extends Component {
   updateScore = letter => {
     let score = this.state.score
     score = this.checkTheLetterExist(letter) ? score + 10 : score - 10
-    if (score >= 0) {
-      this.setState({
-        score: score
-      }, function () {
-        if (this.solutionCompletion()) {
-          alert('Your a WINNER!!!')
-        }
-      })
-    }
-    else alert('GAME OVER!!!')
+    this.setState({
+      score: score
+    })
   }
 
   //changes the letter state 
@@ -71,7 +75,7 @@ class App extends Component {
     return (
       <div className="main-container">
         <Score score={this.state.score} />
-        <Solution letters={this.state.letters} word={this.state.word} hint={this.state.hint} />
+        {this.solutionCompletion() || (this.state.score < 0) ? <EndGame score={this.state.score} startOver={this.startOver}/> : <Solution letters={this.state.letters} word={this.state.word} hint={this.state.hint} />}
         <Letters letters={this.state.letters} selectLetter={this.selectLetter} updateScore={this.updateScore} />
       </div>
     )
