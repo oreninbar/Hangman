@@ -5,7 +5,7 @@ class Solution extends Component {
     render() {
         return (
             <div id="solution">
-                <div id='solution-letters'>{this.props.word.split('').map(c => <Letter key={c} letter={this.props.letters[c] ? c : '_'} />)}</div>
+                <div id='solution-letters'>{this.props.word.split('').map((c,i) => <Letter key={i} letter={this.props.letters[c] ? c : '_'} />)}</div>
                 <div id="hint" className="box">{this.props.hint}</div>
             </div>
         )

@@ -23,12 +23,14 @@ class App extends Component {
       questions: [
         { word: "CALM", hint: "Your ideal mood when coding" },
         { word: "SHOOBERT", hint: "Jona most common word" },
+        { word: "PRINCESSBRIDE", hint: "my name is inigo montoya you killed my father prepare to die" },
+        { word: "TERMINATOR", hint: "hasta la vista baby" },
         { word: "GILLY", hint: "Gilly dog name" }
+
       ]
-      // word: "CALM",
-      // hint: "Your ideal mood when coding",
     }
   }
+
 
 
   //start over the game
@@ -40,12 +42,7 @@ class App extends Component {
       letters: letters,
       score: 50,
       questionNumber: counter
-    }, function () {
-      console.log(this.state.letters);
-      console.log(this.state.score);
-      console.log(this.state.questionNumber);
     })
-
   }
 
   //checks solution completion 
@@ -83,6 +80,7 @@ class App extends Component {
     this.setState({
       letters: letters
     })
+
   }
 
   render() {
@@ -101,12 +99,12 @@ class App extends Component {
 
 export default App;
 
-/* <div className="main-container">
-<Score score={this.state.score} />
-{this.solutionCompletion() || (this.state.score < 0) ?
-  (<div><EndGame score={this.state.score} startOver={this.startOver} />
-    <Letters letters={this.state.letters} selectLetter={this.selectLetter} updateScore={this.updateScore} /></div>)
-  :
-  (<div><Solution letters={this.state.letters} word={this.state.questions[this.state.questionNumber].word} hint={this.state.questions[this.state.questionNumber].hint} />
-<Letters letters={this.state.letters} selectLetter={this.selectLetter} updateScore={this.updateScore} /></div>)}
-</div> */
+  // changeStateLettersList = () => {
+  //   console.log(this.state.letters);
+  //   document.getElementById(`letters`).style.textDecoration = 'none';
+  //   document.getElementById(`letters`).style.color = "none";
+  //   for (let i = 65; i < 91; i++) {
+  //     document.getElementById(`letter ${String.fromCharCode(i)}`).style.textDecoration = "none";
+  //     document.getElementById(`letter ${String.fromCharCode(i)}`).style.color = "none";
+  //   }
+  // }
